@@ -23,29 +23,42 @@ public class FigureAppl {
         shapes[3] = new Square(10);
 
         printArray(shapes);
-        double total = totalArea(shapes);
-        System.out.println("Total area = " + total);
-        total = totalPerimeter(shapes);
-        System.out.println("Total perimeter = " + total);
+        double totalShapesArea = totalArea(shapes);
+        double totalShapesPerimeter = totalPerimeter(shapes);
+        System.out.println("Total area = " + totalShapesArea);
+        System.out.println("Total perimeter = " + totalShapesPerimeter);
+        double circleArea = totalCirclesArea(shapes);
+        System.out.println("Total area of circles = " + circleArea);
     }
 
     private static double totalArea(Shape[] shapes) {
-        double sum = 0;
+        double res = 0;
         for (int i = 0; i < shapes.length; i++) {
             if (shapes[i] != null) {
-                sum += shapes[i].calcArea();
+                res += shapes[i].calcArea();
             }
         }
-        return sum;
+        return res;
     }
+
     private static double totalPerimeter(Shape[] shapes) {
-        double sum = 0;
+        double res = 0;
         for (int i = 0; i < shapes.length; i++) {
             if (shapes[i] != null) {
-                sum += shapes[i].calcPerimeter();
+                res += shapes[i].calcPerimeter();
             }
         }
-        return sum;
+        return res;
+    }
+
+    private static double totalCirclesArea(Shape[] shapes) {
+        double res = 0;
+        for (int i = 0; i < shapes.length; i++) {
+            if (shapes[i] instanceof Circle) {
+                res += shapes[i].calcArea();
+            }
+        }
+        return res;
     }
 
     private static void printArray(Object[] arr) {
